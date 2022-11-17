@@ -4,25 +4,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.tekup.model.Commande;
+import com.tekup.dto.OrderDto;
+import com.tekup.service.interfaces.OrderServiceInterface;
 
 @Service
-public class OrderService implements GenericInterface<Commande>{
+public class OrderService implements OrderServiceInterface{
 
 	@Override
-	public Commande save(Commande entity) {
+	public OrderDto save(OrderDto entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Commande> findAll() {
+	public List<OrderDto> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Commande update(Long id, Commande entity) {
+	public OrderDto update(Long id, OrderDto entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -34,9 +35,11 @@ public class OrderService implements GenericInterface<Commande>{
 	}
 
 	@Override
-	public Commande findById(Long id) {
+	public OrderDto findById(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }

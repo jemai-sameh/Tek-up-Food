@@ -4,25 +4,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.tekup.model.Plat;
+import com.tekup.dto.PayementDto;
+import com.tekup.service.interfaces.PayementServiceInterface;
 
 @Service
-public class PlatService implements GenericInterface<Plat>{
+public class PlatService implements PayementServiceInterface{
 
 	@Override
-	public Plat save(Plat entity) {
+	public PayementDto save(PayementDto entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Plat> findAll() {
+	public List<PayementDto> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Plat update(Long id, Plat entity) {
+	public PayementDto update(Long id, PayementDto entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -34,9 +35,10 @@ public class PlatService implements GenericInterface<Plat>{
 	}
 
 	@Override
-	public Plat findById(Long id) {
+	public PayementDto findById(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 }

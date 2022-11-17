@@ -1,4 +1,4 @@
-package com.tekup.service;
+package com.tekup.service.interfaces;
 import java.util.List;
 
 

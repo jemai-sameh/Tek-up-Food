@@ -1,8 +1,6 @@
 package com.tekup.model;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,9 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import com.tekup.dto.ClientDto.ClientDtoBuilder;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,10 +34,5 @@ public class Client {
 	
 	@OneToMany(mappedBy = "client" ,fetch = FetchType.LAZY)
 	private List<Payement> payements;
-
-
-	
-	
-	
 	
 }

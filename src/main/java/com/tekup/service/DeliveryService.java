@@ -4,25 +4,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.tekup.model.Delivery;
+import com.tekup.dto.DeliveryDto;
+import com.tekup.service.interfaces.DeliveryServiceInterface;
 
 @Service
-public class DeliveryService implements GenericInterface<Delivery>{
+public class DeliveryService implements DeliveryServiceInterface{
 
 	@Override
-	public Delivery save(Delivery entity) {
+	public DeliveryDto save(DeliveryDto entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Delivery> findAll() {
+	public List<DeliveryDto> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Delivery update(Long id, Delivery entity) {
+	public DeliveryDto update(Long id, DeliveryDto entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -34,9 +35,10 @@ public class DeliveryService implements GenericInterface<Delivery>{
 	}
 
 	@Override
-	public Delivery findById(Long id) {
+	public DeliveryDto findById(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
