@@ -1,0 +1,54 @@
+package com.tekup.dto;
+
+import java.math.BigDecimal;
+
+import com.tekup.model.Plat;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class PlatDto {
+
+	private Long platID;
+	private String platName;
+	private BigDecimal platPrix;
+	private String platType;
+	private String description;
+	private String image;
+	
+	private ManagerDto manager;
+	public static PlatDto fromEntity(Plat plat) {
+	    if (plat == null) {
+	      return null;
+	    }
+
+	    return PlatDto.builder()
+	    		.platID(plat.getPlatID())
+	    		.description(plat.getDescription())
+	    		.image(plat.getImage())
+	    		.platName(plat.getPlatName())
+	    		.platPrix(plat.getPlatPrix())
+	    		.platType(plat.getPlatType())
+	    		.manager(ManagerDto.fromEntity(plat.getManager()))
+	    		.build();
+	  }
+  public static Plat toEntity(PlatDto platDto) {
+	    if (platDto == null) {
+	      return null;
+	    }
+  
+	    Plat plat = new Plat();
+	    
+	    plat.setPlatID(platDto.getPlatID());
+	    plat.setDescription(platDto.getDescription());
+	    plat.setImage(platDto.getImage());
+	    plat.setPlatName(platDto.getPlatName());
+	    plat.setPlatPrix(platDto.getPlatPrix());
+	    plat.setPlatType(platDto.getPlatType());
+	    plat.setManager(ManagerDto.toEntity(platDto.getManager()));
+    return plat;
+  }
+
+}
