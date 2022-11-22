@@ -1,44 +1,51 @@
 package com.tekup.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.tekup.dto.PlatDto;
+import com.tekup.model.Plat;
+import com.tekup.repository.PlatRepository;
+import com.tekup.service.interfaces.PlatServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tekup.dto.PayementDto;
-import com.tekup.service.interfaces.PayementServiceInterface;
 
 @Service
-public class PlatService implements PayementServiceInterface{
+public class PlatService implements PlatServiceInterface {
+
+	@Autowired
+	PlatRepository  repository;
 
 	@Override
-	public PayementDto save(PayementDto entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public PlatDto save(PlatDto entity) {
+		Plat plat = PlatDto.toEntity(entity);
+		repository.save(plat);
+		PlatDto dto = PlatDto.fromEntity(plat);
+		return dto;
 	}
 
 	@Override
-	public List<PayementDto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PlatDto> findAll() {
+		return PlatDto.fromListEntity(repository.findAll());
 	}
 
 	@Override
-	public PayementDto update(Long id, PayementDto entity) {
-		// TODO Auto-generated method stub
+	public PlatDto update(Long id, PlatDto entity) {
 		return null;
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		repository.deleteById(id);
 	}
 
 	@Override
-	public PayementDto findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
+	public PlatDto findById(Long id) {
+		Optional<Plat> optional = repository.findById(id);
+		if (optional.isPresent()) {
+			Plat plat = optional.get();
+			return PlatDto.fromEntity(plat);
+		}
+		return null;	}
 }

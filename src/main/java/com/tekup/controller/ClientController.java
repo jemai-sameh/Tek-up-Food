@@ -29,7 +29,7 @@ public class ClientController {
 	ClientServiceInterface serviceInterface;
 	
 	@PostMapping("/saveOrUpdate")
-	public ResponseEntity<ClientDto> AjouterStagiaire(@Valid @RequestBody ClientDto clientDto) {
+	public ResponseEntity<ClientDto> ADD(@Valid @RequestBody ClientDto clientDto) {
 		ClientDto clientDtosaved = serviceInterface.save(clientDto);
 		return new ResponseEntity<ClientDto>(clientDtosaved, HttpStatus.CREATED);
 	}

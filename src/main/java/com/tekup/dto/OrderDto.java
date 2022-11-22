@@ -2,6 +2,8 @@ package com.tekup.dto;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.tekup.enumeration.PaymentMethod;
 import com.tekup.model.Commande;
@@ -57,5 +59,7 @@ public class OrderDto {
 		order.setPayement(PayementDto.toEntity(orderDto.getPayement()));
 		return order;
 	}
-
+	public static List<OrderDto> fromListEntity(List<Commande> list) {
+		return list.stream().map(x -> fromEntity(x)).collect(Collectors.toList());
+	}
 }

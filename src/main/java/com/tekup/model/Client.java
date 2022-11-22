@@ -1,6 +1,6 @@
 package com.tekup.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,10 +29,10 @@ public class Client {
 	
 	
 	@OneToMany(mappedBy = "client" ,fetch = FetchType.LAZY)
-	private List<Commande> orders;
+	private Set<Commande> orders;
 	
 	
 	@OneToMany(mappedBy = "client" ,fetch = FetchType.LAZY)
-	private List<Payement> payements;
+	private Set<Payement> payements;
 	
 }

@@ -1,11 +1,13 @@
 package com.tekup.dto;
 
-import javax.validation.constraints.Pattern;
 
 import com.tekup.model.Manager;
 
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -13,7 +15,7 @@ public class ManagerDto {
 	private Long managerID;	
 	private String firstName;
 	private String lastName;
-	@Pattern(regexp="^[0-9]{10}$",message="it should be a number ")
+	//@Pattern(regexp="^[0-9]{10}$",message="it should be a number ")
 	private String phoneNumber;
 	private String passwd;
 	
@@ -22,7 +24,6 @@ public class ManagerDto {
 	    if (manager == null) {
 	      return null;
 	    }
-
 	    return ManagerDto.builder()
 	    		.managerID(manager.getManagerID())
 	    		.firstName(manager.getFirstName())
@@ -37,13 +38,15 @@ public class ManagerDto {
   
 	    Manager manager = new Manager();
 	    
-	    manager.setManagerID(manager.getManagerID());
-	    manager.setFirstName(manager.getFirstName());
-	    manager.setLastName(manager.getLastName());
-	    manager.setPasswd(manager.getPasswd());
-	    manager.setPhoneNumber(manager.getPhoneNumber());
+	    manager.setManagerID(managerDto.getManagerID());
+	    manager.setFirstName(managerDto.getFirstName());
+	    manager.setLastName(managerDto.getLastName());
+	    manager.setPasswd(managerDto.getPasswd());
+	    manager.setPhoneNumber(managerDto.getPhoneNumber());
     return manager;
   }
 
-
+	public static List<ManagerDto> fromListEntity(List<Manager> list) {
+		return list.stream().map(x -> fromEntity(x)).collect(Collectors.toList());
+	}
 }

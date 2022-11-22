@@ -1,6 +1,6 @@
 package com.tekup.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,8 +30,8 @@ public class Manager {
 	private String passwd;
 
 	@OneToMany(mappedBy = "manager" ,fetch = FetchType.LAZY)
-	private List<Commande> commandes;
+	private Set<Commande> commandes;
 	
 	@OneToMany(mappedBy = "manager" ,fetch = FetchType.LAZY)
-	private List<Plat> plats;
+	private Set<Plat> plats;
 }
