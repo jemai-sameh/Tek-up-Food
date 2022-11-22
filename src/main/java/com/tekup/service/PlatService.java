@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.tekup.dto.PlatDto;
-import com.tekup.model.Plat;
+import com.tekup.service.interfaces.model.Plat;
 import com.tekup.repository.PlatRepository;
 import com.tekup.service.interfaces.PlatServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;

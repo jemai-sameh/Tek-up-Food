@@ -1,4 +1,4 @@
-package com.tekup.model;
+package com.tekup.service.interfaces.model;
 
 import java.util.Date;
 

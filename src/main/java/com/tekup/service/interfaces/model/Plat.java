@@ -1,5 +1,6 @@
-package com.tekup.model;
+package com.tekup.service.interfaces.model;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -7,7 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,23 +19,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Client {
+public class Plat  {
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long clientID;
+	private Long platID;
+	private String platName;
+	private BigDecimal platPrix;
+	private String platType;
+	private String description;
+	private String image;
 	
-	private String firstName;
-	private String lastName;
-	private String phoneNumber;
-	private String passwd;
-	private String mail;
-	
-	
-	@OneToMany(mappedBy = "client" ,fetch = FetchType.LAZY)
+	@ManyToMany (fetch = FetchType.EAGER)
 	private Set<Commande> orders;
+
 	
-	
-	@OneToMany(mappedBy = "client" ,fetch = FetchType.LAZY)
-	private Set<Payement> payements;
-	
+	@ManyToOne
+	private Manager manager;
 }
+

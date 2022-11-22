@@ -1,9 +1,13 @@
 package com.tekup.service;
 
 import java.util.List;
+import java.util.Optional;
 
 
+import com.tekup.dto.DeliveryDto;
 import com.tekup.repository.DeliveryManRepository;
+import com.tekup.service.interfaces.model.Delivery;
+import com.tekup.service.interfaces.model.DeliveryMan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +22,15 @@ public class DeliveryManService implements DeliveryManServiceInterface{
 
 	@Override
 	public DeliveryManDto save(DeliveryManDto entity) {
-
-		return  null;
+		DeliveryMan deliveryMan = DeliveryManDto.toEntity(entity);
+		repository.save(deliveryMan);
+		DeliveryManDto dto = DeliveryManDto.fromEntity(deliveryMan);
+		return dto;
 	}
 
 	@Override
 	public List<DeliveryManDto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return DeliveryManDto.fromListEntity(repository.findAll());
 	}
 
 	@Override
@@ -36,13 +41,17 @@ public class DeliveryManService implements DeliveryManServiceInterface{
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		repository.deleteById(id);
 		
 	}
 
 	@Override
 	public DeliveryManDto findById(Long id) {
-		// TODO Auto-generated method stub
+		Optional<DeliveryMan> optional = repository.findById(id);
+		if (optional.isPresent()) {
+			DeliveryMan delivery = optional.get();
+			return DeliveryManDto.fromEntity(delivery);
+		}
 		return null;
 	}
 

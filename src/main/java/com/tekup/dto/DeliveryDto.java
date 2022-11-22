@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-import com.tekup.model.Delivery;
+import com.tekup.service.interfaces.model.Delivery;
 
 import lombok.Builder;
 import lombok.Data;

@@ -3,7 +3,7 @@ package com.tekup.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.tekup.model.Manager;
+import com.tekup.service.interfaces.model.Manager;
 import com.tekup.repository.ManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

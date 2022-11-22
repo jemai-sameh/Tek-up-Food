@@ -1,6 +1,6 @@
 package com.tekup.dto;
 
-import com.tekup.model.Address;
+import com.tekup.service.interfaces.model.Address;
 
 import lombok.Builder;
 import lombok.Data;
