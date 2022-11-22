@@ -1,6 +1,8 @@
 package com.tekup.dto;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.tekup.model.Plat;
 
@@ -50,5 +52,8 @@ public class PlatDto {
 	    plat.setManager(ManagerDto.toEntity(platDto.getManager()));
     return plat;
   }
+	public static List<PlatDto> fromListEntity(List<Plat> list) {
+		return list.stream().map(x -> fromEntity(x)).collect(Collectors.toList());
+	}
 
 }

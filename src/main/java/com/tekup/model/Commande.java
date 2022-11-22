@@ -2,7 +2,7 @@ package com.tekup.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -55,10 +55,10 @@ public class Commande{
 	private Manager manager;
 	
 	@ManyToMany(mappedBy = "orders" ,fetch = FetchType.EAGER)
-	private List<Plat> plats;
+	private Set<Plat> plats;
 	
 	
 	@OneToMany(mappedBy = "commande",fetch = FetchType.LAZY)
-	private List<Delivery> delivery;
+	private Set<Delivery> delivery;
 	
 }

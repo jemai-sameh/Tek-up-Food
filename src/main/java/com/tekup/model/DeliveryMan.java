@@ -1,6 +1,6 @@
 package com.tekup.model;
 
-import java.util.List;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,6 +31,6 @@ public class DeliveryMan {
 	
 	
 	@OneToMany(mappedBy = "deliveryMan",fetch = FetchType.LAZY)
-	private List<Delivery> delivery;
+	private Set<Delivery> delivery;
 
 }

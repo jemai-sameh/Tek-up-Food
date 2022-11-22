@@ -1,7 +1,7 @@
 package com.tekup.model;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,7 +32,7 @@ public class Plat  {
 	private String image;
 	
 	@ManyToMany (fetch = FetchType.EAGER)
-	private List<Commande> orders;
+	private Set<Commande> orders;
 
 	
 	@ManyToOne

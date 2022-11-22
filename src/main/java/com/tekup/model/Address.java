@@ -1,6 +1,6 @@
 package com.tekup.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,5 +27,5 @@ public class Address {
 	private String postalCode;
 
 	@OneToMany(mappedBy = "address" ,fetch = FetchType.LAZY)
-	private List<Commande> Commandes;
+	private Set<Commande> Commandes;
 }

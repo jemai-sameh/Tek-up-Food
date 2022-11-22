@@ -1,6 +1,8 @@
 package com.tekup.dto;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.tekup.enumeration.CarteType;
 import com.tekup.model.Payement;
@@ -12,8 +14,6 @@ import lombok.Data;
 public class PayementDto {
 
 	private Long paymentID;
-
-	
 	private Date paymentDate;
 	private String carteNumber;
 	private CarteType carteType;
@@ -51,5 +51,7 @@ public class PayementDto {
 		    payement.setClient(ClientDto.toEntity(payementDto.getClient())) ;
 	    return payement;
 	  }
-
+	public static List<PayementDto> fromListEntity(List<Payement> list) {
+		return list.stream().map(x -> fromEntity(x)).collect(Collectors.toList());
+	}
 }

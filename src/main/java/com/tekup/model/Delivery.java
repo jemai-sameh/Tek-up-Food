@@ -32,6 +32,7 @@ public class Delivery {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date DeliveryDate;
 
+
 	@ManyToOne
 	@JoinColumn(name = "deliveryManID")
 	private DeliveryMan deliveryMan;

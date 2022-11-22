@@ -1,6 +1,8 @@
 package com.tekup.dto;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 import com.tekup.model.Delivery;
@@ -46,5 +48,7 @@ public class DeliveryDto {
 	        return delivery;
 	    }
 
-	
+	public static List<DeliveryDto> fromListEntity(List<Delivery> deliveries) {
+		return deliveries.stream().map(x -> fromEntity(x)).collect(Collectors.toList());
+	}
 }
