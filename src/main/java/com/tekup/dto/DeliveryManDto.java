@@ -9,5 +9,6 @@ public class DeliveryManDto {
 
     public static List<DeliveryManDto> fromListEntity(List<DeliveryMan> list) {
         return null;//list.stream().map(x -> fromEntity(x)).collect(Collectors.toList());
+
     }
 }
