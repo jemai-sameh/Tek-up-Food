@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.tekup.enumeration.PaymentMethod;
-import com.tekup.model.Commande;
+import com.tekup.service.interfaces.model.Commande;
 
 import lombok.Builder;
 import lombok.Data;

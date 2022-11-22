@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.tekup.enumeration.CarteType;
-import com.tekup.model.Payement;
+import com.tekup.service.interfaces.model.Payement;
 
 import lombok.Builder;
 import lombok.Data;

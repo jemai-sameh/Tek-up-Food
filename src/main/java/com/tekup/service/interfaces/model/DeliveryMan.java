@@ -1,4 +1,4 @@
-package com.tekup.model;
+package com.tekup.service.interfaces.model;
 
 import java.util.Set;
 import javax.persistence.Entity;
@@ -20,7 +20,6 @@ public class DeliveryMan {
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private Long deliveryManID;
-	
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;

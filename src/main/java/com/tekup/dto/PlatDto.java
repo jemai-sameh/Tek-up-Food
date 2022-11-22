@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.tekup.model.Plat;
+import com.tekup.service.interfaces.model.Plat;
 
 import lombok.Builder;
 import lombok.Data;
