@@ -2,8 +2,12 @@ package com.tekup.dto;
 
 import com.tekup.service.interfaces.model.Address;
 
+import com.tekup.service.interfaces.model.DeliveryMan;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Builder
 @Data
@@ -40,4 +44,8 @@ public class AddressDto {
 
 	    return address;
 	  }
+	public static List<AddressDto> fromListEntity(List<Address> list) {
+		return list.stream().map(x -> fromEntity(x)).collect(Collectors.toList());
+	}
+
 }
