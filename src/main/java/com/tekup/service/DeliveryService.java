@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-import com.tekup.service.interfaces.model.Delivery;
+import com.tekup.model.Delivery;
 import com.tekup.repository.DeliveryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

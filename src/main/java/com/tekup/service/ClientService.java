@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tekup.dto.ClientDto;
-import com.tekup.service.interfaces.model.Client;
+import com.tekup.model.Client;
 import com.tekup.repository.ClientRepository;
 import com.tekup.service.interfaces.ClientServiceInterface;
 

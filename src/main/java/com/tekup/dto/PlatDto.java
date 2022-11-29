@@ -2,15 +2,18 @@ package com.tekup.dto;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.tekup.service.interfaces.model.Plat;
+import com.tekup.model.Plat;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class PlatDto {
 
 	private Long platID;
@@ -54,6 +57,9 @@ public class PlatDto {
   }
 	public static List<PlatDto> fromListEntity(List<Plat> list) {
 		return list.stream().map(x -> fromEntity(x)).collect(Collectors.toList());
+	}
+	public static Set<Plat> fromListDtoEntity(Set<PlatDto> list) {
+		return list.stream().map(x -> toEntity(x)).collect(Collectors.toSet());
 	}
 
 }

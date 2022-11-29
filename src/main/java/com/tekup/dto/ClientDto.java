@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.constraints.Email;
 
-import com.tekup.service.interfaces.model.Client;
+import com.tekup.model.Client;
 
 import lombok.Builder;
 import lombok.Data;

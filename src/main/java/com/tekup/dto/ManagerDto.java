@@ -1,7 +1,7 @@
 package com.tekup.dto;
 
 
-import com.tekup.service.interfaces.model.Manager;
+import com.tekup.model.Manager;
 
 import lombok.Builder;
 import lombok.Data;
@@ -37,7 +37,6 @@ public class ManagerDto {
 	    }
   
 	    Manager manager = new Manager();
-	    
 	    manager.setManagerID(managerDto.getManagerID());
 	    manager.setFirstName(managerDto.getFirstName());
 	    manager.setLastName(managerDto.getLastName());

@@ -1,4 +1,4 @@
-package com.tekup.service.interfaces.model;
+package com.tekup.model;
 
 import java.util.Set;
 
@@ -17,21 +17,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Manager {
+public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long managerID;
-	
-	
-	private String firstName;
-	private String lastName;
-	private String phoneNumber;
-	private String passwd;
+	private Long addressID;
+	private String street;
+	private String town;
+	private String postalCode;
 
-	@OneToMany(mappedBy = "manager" ,fetch = FetchType.LAZY)
-	private Set<Commande> commandes;
-	
-	@OneToMany(mappedBy = "manager" ,fetch = FetchType.LAZY)
-	private Set<Plat> plats;
+	@OneToMany(mappedBy = "address" ,fetch = FetchType.LAZY)
+	private Set<Commande> Commandes;
 }

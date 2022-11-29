@@ -1,4 +1,4 @@
-package com.tekup.service.interfaces.model;
+package com.tekup.model;
 
 import java.util.Date;
 
@@ -31,8 +31,8 @@ public class Payement  {
 
 	@OneToOne
 	private Commande order;
-	
+	/*
 	@ManyToOne
-	private Client client;
+	private Client client;*/
 
 }

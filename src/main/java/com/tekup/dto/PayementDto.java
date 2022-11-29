@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.tekup.enumeration.CarteType;
-import com.tekup.service.interfaces.model.Payement;
+import com.tekup.model.Payement;
 
 import lombok.Builder;
 import lombok.Data;
@@ -19,9 +19,9 @@ public class PayementDto {
 	private CarteType carteType;
 
 	private OrderDto order;
-
+/*
 	private ClientDto client;
-	
+	*/
 	  public static PayementDto fromEntity(Payement payement) {
 		    if (payement == null) {
 		      return null;
@@ -33,7 +33,7 @@ public class PayementDto {
 		    		.carteType(payement.getCarteType())
 		    		.paymentDate(payement.getPaymentDate())
 		    		.order(OrderDto.fromEntity(payement.getOrder()))
-		    		.client(ClientDto.fromEntity(payement.getClient()))    		
+		    	//	.client(ClientDto.fromEntity(payement.getClient()))
 		  
 		        .build();
 		  }
@@ -48,7 +48,7 @@ public class PayementDto {
 		    payement.setCarteType(payementDto.getCarteType());
 		    payement.setPaymentDate(payementDto.getPaymentDate());
 		    payement.setOrder(OrderDto.toEntity(payementDto.getOrder()));
-		    payement.setClient(ClientDto.toEntity(payementDto.getClient())) ;
+		 //   payement.setClient(ClientDto.toEntity(payementDto.getClient())) ;
 	    return payement;
 	  }
 	public static List<PayementDto> fromListEntity(List<Payement> list) {

@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 
-import com.tekup.dto.DeliveryDto;
 import com.tekup.repository.DeliveryManRepository;
-import com.tekup.service.interfaces.model.Delivery;
-import com.tekup.service.interfaces.model.DeliveryMan;
+import com.tekup.model.DeliveryMan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

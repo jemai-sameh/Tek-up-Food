@@ -1,6 +1,7 @@
-package com.tekup.service.interfaces.model;
+package com.tekup.model;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,11 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -31,11 +32,20 @@ public class Plat  {
 	private String description;
 	private String image;
 	
-	@ManyToMany (fetch = FetchType.EAGER)
+	@ManyToMany (mappedBy = "plats" ,fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Commande> orders;
 
 	
 	@ManyToOne
 	private Manager manager;
+
+
+	/*public void addOrder(Commande entity ) {
+		if (this.orders==null ) {this.orders = new HashSet<Commande>();}
+		this.orders.add(entity);
+		if ( entity.getPlats()==null ) {entity.setPlats(new HashSet<Plat>());}
+		entity.getPlats().add(this);
+	}*/
 }
 

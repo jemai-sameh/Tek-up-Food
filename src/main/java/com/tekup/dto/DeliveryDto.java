@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-import com.tekup.service.interfaces.model.Delivery;
+import com.tekup.model.Delivery;
 
 import lombok.Builder;
 import lombok.Data;
@@ -30,7 +30,7 @@ public class DeliveryDto {
 	                .DeliveryID(delivery.getDeliveryID())
 	                .DeliveryDate(delivery.getDeliveryDate())
 	                .commande(OrderDto.fromEntity(delivery.getCommande()))
-	                //.deliveryMan(DeliveryManDto.fromEntity(delivery.getDeliveryMan()))
+	                .deliveryMan(DeliveryManDto.fromEntity(delivery.getDeliveryMan()))
 	                .build();
 
 	    }
@@ -43,7 +43,7 @@ public class DeliveryDto {
 	        delivery.setDeliveryID(deliveryDto.getDeliveryID());
 	        delivery.setDeliveryDate(deliveryDto.getDeliveryDate());
 	        delivery.setCommande(OrderDto.toEntity(deliveryDto.getCommande()));
-	        //delivery.setDeliveryMan(DeliveryManDto.toEntity(deliveryDto.getDeliveryMan()));
+	        delivery.setDeliveryMan(DeliveryManDto.toEntity(deliveryDto.getDeliveryMan()));
 
 	        return delivery;
 	    }

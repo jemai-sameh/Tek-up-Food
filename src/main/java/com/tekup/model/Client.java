@@ -1,13 +1,13 @@
-package com.tekup.service.interfaces.model;
+package com.tekup.model;
 
 import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,20 +16,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class DeliveryMan {
+public class Client {
 	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO)
-	private Long deliveryManID;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long clientID;
+	
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
 	private String passwd;
-	private String latitude;
-	private String longitude;
-	private String availablity;
+	private String mail;
 	
 	
-	@OneToMany(mappedBy = "deliveryMan",fetch = FetchType.LAZY)
-	private Set<Delivery> delivery;
-
+	@OneToMany(mappedBy = "client" ,fetch = FetchType.LAZY)
+	private Set<Commande> orders;
+	
+	
+	/*@OneToMany(mappedBy = "client" ,fetch = FetchType.LAZY)
+	private Set<Payement> payements;*/
+	
 }

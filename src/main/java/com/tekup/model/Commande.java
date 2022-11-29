@@ -1,7 +1,8 @@
-package com.tekup.service.interfaces.model;
+package com.tekup.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,13 +17,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tekup.enumeration.PaymentMethod;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -30,7 +31,7 @@ public class Commande{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long OrderID;
+	private Long orderID;
 
 	
 	private String reference;
@@ -46,6 +47,7 @@ public class Commande{
 	private Address address;
 	
 	@OneToOne
+	@JsonIgnore
 	private Payement payement;
 	
 	@ManyToOne
@@ -54,11 +56,24 @@ public class Commande{
 	@ManyToOne
 	private Manager manager;
 	
-	@ManyToMany(mappedBy = "orders" ,fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	private Set<Plat> plats;
 	
 	
 	@OneToMany(mappedBy = "commande",fetch = FetchType.LAZY)
-	private Set<Delivery> delivery;
-	
+	private Set<Delivery> deliverySet;
+
+	public void addPlat(Plat entity ) {
+		if (this.plats==null ) {
+			this.plats = new HashSet<Plat>();
+		}
+		this.plats.add(entity);
+		if ( entity.getOrders()==null ) {
+			entity.setOrders(new HashSet<Commande>());
+		}
+		entity.getOrders().add(this);
+	}
+
+
+
 }

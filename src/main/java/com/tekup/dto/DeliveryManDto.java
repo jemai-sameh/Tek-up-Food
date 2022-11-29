@@ -1,7 +1,7 @@
 package com.tekup.dto;
 
 
-import com.tekup.service.interfaces.model.DeliveryMan;
+import com.tekup.model.DeliveryMan;
 import lombok.Builder;
 import lombok.Data;
 
