@@ -7,6 +7,7 @@ import com.tekup.service.interfaces.OrderServiceInterface;
 import com.tekup.service.interfaces.PlatServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,24 +22,23 @@ public class OrderController {
     @Autowired
     OrderServiceInterface serviceInterface;
 
-    @PostMapping("/saveOrUpdate")
+    @PostMapping(value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderDto> ADD(@Valid @RequestBody OrderDetailsDto dto) {
-        OrderDto dtosaved = serviceInterface.saveOlder(dto);
-        return new ResponseEntity<OrderDto>(dtosaved, HttpStatus.CREATED);
+        return serviceInterface.saveOrder(dto);
     }
 
-    @DeleteMapping("/deleteById/{id}")
-    public void deleteById(@PathVariable Long id) {
-        serviceInterface.deleteById(id);
+    @DeleteMapping(value = "/deleteById/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        return serviceInterface.deleteById(id);
     }
 
-    @GetMapping("/findAll")
-    public List<OrderDto> findAll() {
+    @GetMapping(value = "/findAll",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<OrderDto>> findAll() {
         return serviceInterface.findAll();
     }
 
-    @GetMapping("/findById/{id}")
-    public OrderDto findById(@PathVariable Long id) {
+    @GetMapping(value = "/findById/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OrderDto> findById(@PathVariable Long id) {
         return serviceInterface.findById(id);
     }
 

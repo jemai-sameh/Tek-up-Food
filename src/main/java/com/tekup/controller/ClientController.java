@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,25 +28,25 @@ public class ClientController {
 	
 	@Autowired
 	ClientServiceInterface serviceInterface;
-	
-	@PostMapping("/saveOrUpdate")
+
+	@PostMapping(value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ClientDto> ADD(@Valid @RequestBody ClientDto clientDto) {
-		ClientDto clientDtosaved = serviceInterface.save(clientDto);
-		return new ResponseEntity<ClientDto>(clientDtosaved, HttpStatus.CREATED);
-	}
-	
-	@DeleteMapping("/deleteById/{id}")
-	public void deleteById(@PathVariable Long id) {
-		serviceInterface.deleteById(id);
+		return serviceInterface.save(clientDto);
 	}
 
-	@GetMapping("/findAll")
-	public List<ClientDto> findAll() {
+	@DeleteMapping(value = "/deleteById/{id}")
+	public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+
+		return serviceInterface.deleteById(id);
+	}
+
+	@GetMapping(value = "/findAll",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<ClientDto>> findAll() {
 		return serviceInterface.findAll();
 	}
 
-	@GetMapping("/findById/{id}")
-	public ClientDto findById(@PathVariable Long id) {
+	@GetMapping(value = "/findById/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ClientDto> findById(@PathVariable Long id) {
 		return serviceInterface.findById(id);
 	}
 

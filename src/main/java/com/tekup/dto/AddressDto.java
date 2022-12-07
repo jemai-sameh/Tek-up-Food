@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Data
 public class AddressDto {
 
-	private Long addressID;
+	private Long id;
 	private String street;
 	private String town;
 	private String postalCode;
@@ -22,7 +22,7 @@ public class AddressDto {
 		}
 
 		return AddressDto.builder()
-				.addressID(address.getAddressID())
+				.id(address.getId())
 				.postalCode(address.getPostalCode())
 				.street(address.getStreet())
 				.town(address.getTown())
@@ -35,7 +35,7 @@ public class AddressDto {
 		}
 
 		Address address = new Address();
-		address.setAddressID(addressDto.getAddressID());
+		address.setId(addressDto.getId());
 		address.setPostalCode(addressDto.getPostalCode());
 		address.setStreet(addressDto.getStreet());
 		address.setTown(addressDto.getTown());

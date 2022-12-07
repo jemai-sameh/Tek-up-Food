@@ -12,16 +12,16 @@ import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Manager {
+public class Manager extends AbstractEntity{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long managerID;
+
 	
 	
 	private String firstName;

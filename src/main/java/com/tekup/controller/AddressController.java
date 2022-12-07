@@ -2,10 +2,9 @@ package com.tekup.controller;
 import com.tekup.dto.AddressDto;
 import com.tekup.service.interfaces.AddressServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,24 +15,24 @@ public class AddressController {
     @Autowired
     AddressServiceInterface serviceInterface;
 
-    @PostMapping("/saveOrUpdate")
-    public ResponseEntity<AddressDto> ADD(@Valid @RequestBody AddressDto dto) {
-        AddressDto dtosaved = serviceInterface.save(dto);
-        return new ResponseEntity<AddressDto>(dtosaved, HttpStatus.CREATED);
+    @PostMapping(value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AddressDto> ADD(@RequestBody AddressDto dto) {
+        return serviceInterface.save(dto);
+
     }
 
-    @DeleteMapping("/deleteById/{id}")
-    public void deleteById(@PathVariable Long id) {
-        serviceInterface.deleteById(id);
+    @DeleteMapping(value = "/deleteById/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable(value = "id") Long id) {
+        return serviceInterface.deleteById(id);
     }
 
-    @GetMapping("/findAll")
-    public List<AddressDto> findAll() {
+    @GetMapping(value = "/findAll",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<AddressDto>> findAll() {
         return serviceInterface.findAll();
     }
 
-    @GetMapping("/findById/{id}")
-    public AddressDto findById(@PathVariable Long id) {
+    @GetMapping(value = "/findById/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AddressDto> findById(@PathVariable Long id) {
         return serviceInterface.findById(id);
     }
 

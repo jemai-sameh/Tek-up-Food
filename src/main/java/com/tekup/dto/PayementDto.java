@@ -1,5 +1,6 @@
 package com.tekup.dto;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,8 +14,8 @@ import lombok.Data;
 @Builder
 public class PayementDto {
 
-	private Long paymentID;
-	private Date paymentDate;
+	private Long id;
+	private Instant paymentDate;
 	private String carteNumber;
 	private CarteType carteType;
 
@@ -28,7 +29,7 @@ public class PayementDto {
 		    }
 
 		    return PayementDto.builder()
-		    		.paymentID(payement.getPaymentID())
+		    		.id(payement.getId())
 		    		.carteNumber(payement.getCarteNumber())
 		    		.carteType(payement.getCarteType())
 		    		.paymentDate(payement.getPaymentDate())
@@ -43,7 +44,7 @@ public class PayementDto {
 		    }
 	  
 		    Payement payement = new Payement();
-		    payement.setPaymentID(payementDto.getPaymentID());
+		    payement.setId(payementDto.getId());
 		    payement.setCarteNumber(payementDto.getCarteNumber());
 		    payement.setCarteType(payementDto.getCarteType());
 		    payement.setPaymentDate(payementDto.getPaymentDate());

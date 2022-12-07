@@ -1,6 +1,7 @@
 package com.tekup.dto;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -17,13 +18,13 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 public class OrderDto {
-	private Long orderID;
+	private Long id;
 
 	private String reference;
 	private BigDecimal totalPrice;
 	private PaymentMethod paymentMethod;
 
-	private Date orderDate;
+	private Instant orderDate;
 
 	private AddressDto address;
 
@@ -43,7 +44,7 @@ public class OrderDto {
 		}
 
 		return OrderDto.builder()
-				.orderID(order.getOrderID())
+				.id(order.getId())
 				.totalPrice(order.getTotalPrice())
 				.reference(order.getReference())
 				.paymentMethod(order.getPaymentMethod())
@@ -60,7 +61,7 @@ public class OrderDto {
 		}
 
 		Commande order = new Commande();
-		order.setOrderID(orderDto.getOrderID());
+		order.setId(orderDto.getId());
 		order.setTotalPrice(orderDto.getTotalPrice());
 		order.setReference(orderDto.getReference());
 		order.setPaymentMethod(orderDto.getPaymentMethod());

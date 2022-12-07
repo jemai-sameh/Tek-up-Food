@@ -1,5 +1,6 @@
 package com.tekup.dto;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,9 +15,9 @@ import lombok.Data;
 @Builder
 public class DeliveryDto {
 
-	    private Long DeliveryID;
+	    private Long id;
 
-	    private Date DeliveryDate;
+	    private Instant DeliveryDate;
 
 	    private OrderDto commande;
 
@@ -27,7 +28,7 @@ public class DeliveryDto {
 	            return null;
 	        }
 	        return DeliveryDto.builder()
-	                .DeliveryID(delivery.getDeliveryID())
+	                .id(delivery.getId())
 	                .DeliveryDate(delivery.getDeliveryDate())
 	                .commande(OrderDto.fromEntity(delivery.getCommande()))
 	                .deliveryMan(DeliveryManDto.fromEntity(delivery.getDeliveryMan()))
@@ -40,7 +41,7 @@ public class DeliveryDto {
 	            return null;
 	        }
 	        Delivery delivery = new Delivery();
-	        delivery.setDeliveryID(deliveryDto.getDeliveryID());
+	        delivery.setId(deliveryDto.getId());
 	        delivery.setDeliveryDate(deliveryDto.getDeliveryDate());
 	        delivery.setCommande(OrderDto.toEntity(deliveryDto.getCommande()));
 	        delivery.setDeliveryMan(DeliveryManDto.toEntity(deliveryDto.getDeliveryMan()));

@@ -16,7 +16,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class PlatDto {
 
-	private Long platID;
+	private Long id;
 	private String platName;
 	private BigDecimal platPrix;
 	private String platType;
@@ -30,7 +30,7 @@ public class PlatDto {
 	    }
 
 	    return PlatDto.builder()
-	    		.platID(plat.getPlatID())
+	    		.id(plat.getId())
 	    		.description(plat.getDescription())
 	    		.image(plat.getImage())
 	    		.platName(plat.getPlatName())
@@ -46,7 +46,7 @@ public class PlatDto {
   
 	    Plat plat = new Plat();
 	    
-	    plat.setPlatID(platDto.getPlatID());
+	    plat.setId(platDto.getId());
 	    plat.setDescription(platDto.getDescription());
 	    plat.setImage(platDto.getImage());
 	    plat.setPlatName(platDto.getPlatName());

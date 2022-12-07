@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class DeliveryManDto {
 
 
-    private Long deliveryManID;
+    private Long id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -27,7 +27,7 @@ public class DeliveryManDto {
             return null;
         }
         return DeliveryManDto.builder()
-                .deliveryManID(deliveryMan.getDeliveryManID())
+                .id(deliveryMan.getId())
                 .firstName(deliveryMan.getFirstName())
                 .lastName(deliveryMan.getLastName())
                 .phoneNumber(deliveryMan.getPhoneNumber())
@@ -44,7 +44,7 @@ public class DeliveryManDto {
             return null;
         }
         DeliveryMan deliveryMan = new DeliveryMan();
-        deliveryMan.setDeliveryManID(deliveryManDto.getDeliveryManID());
+        deliveryMan.setId(deliveryManDto.getId());
         deliveryMan.setFirstName(deliveryManDto.getFirstName());
         deliveryMan.setLastName(deliveryManDto.getLastName());
         deliveryMan.setPhoneNumber(deliveryManDto.getPhoneNumber());

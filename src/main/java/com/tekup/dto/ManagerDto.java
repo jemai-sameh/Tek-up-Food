@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Data
 @Builder
 public class ManagerDto {
-	private Long managerID;	
+	private Long id;
 	private String firstName;
 	private String lastName;
 	//@Pattern(regexp="^[0-9]{10}$",message="it should be a number ")
@@ -25,7 +25,7 @@ public class ManagerDto {
 	      return null;
 	    }
 	    return ManagerDto.builder()
-	    		.managerID(manager.getManagerID())
+	    		.id(manager.getId())
 	    		.firstName(manager.getFirstName())
 	    		.lastName(manager.getLastName())
 	    		.passwd(manager.getPasswd())
@@ -37,7 +37,7 @@ public class ManagerDto {
 	    }
   
 	    Manager manager = new Manager();
-	    manager.setManagerID(managerDto.getManagerID());
+	    manager.setId(managerDto.getId());
 	    manager.setFirstName(managerDto.getFirstName());
 	    manager.setLastName(managerDto.getLastName());
 	    manager.setPasswd(managerDto.getPasswd());

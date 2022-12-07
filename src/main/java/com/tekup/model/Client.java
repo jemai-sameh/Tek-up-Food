@@ -11,15 +11,14 @@ import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @AllArgsConstructor
+@SuperBuilder
 @NoArgsConstructor
 @Entity
-public class Client {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long clientID;
+public class Client extends AbstractEntity{
 	
 	private String firstName;
 	private String lastName;

@@ -14,18 +14,17 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Plat  {
+public class Plat  extends AbstractEntity{
 
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long platID;
 	private String platName;
 	private BigDecimal platPrix;
 	private String platType;

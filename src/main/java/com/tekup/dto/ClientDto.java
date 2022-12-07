@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 @Builder
 public class ClientDto {
-	private Long clientID;
+	private Long id;
 	
 	private String firstName;
 	private String lastName;
@@ -35,7 +35,7 @@ public class ClientDto {
 		    }
 
 		    return ClientDto.builder()
-		    	.clientID(client.getClientID())
+		    	.id(client.getId())
 		        .firstName(client.getFirstName())
 		        .lastName(client.getLastName())
 		        .phoneNumber(client.getPhoneNumber())
@@ -49,7 +49,7 @@ public class ClientDto {
 		    }
 	  
 	  Client client = new Client();
-	  client.setClientID(clientDto.getClientID());
+	  client.setId(clientDto.getId());
 	  client.setFirstName(clientDto.getFirstName());
 	  client.setLastName(clientDto.getLastName());
 	  client.setPhoneNumber(clientDto.getPhoneNumber());

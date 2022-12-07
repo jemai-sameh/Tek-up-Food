@@ -6,19 +6,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Set;
 
 @Getter
 @Setter
 public class OrderDetailsDto {
-    private Long orderID;
+    private Long id;
 
     private String reference;
     private BigDecimal totalPrice;
     private PaymentMethod paymentMethod;
 
-    private Date orderDate;
+    private Instant orderDate;
 
     private AddressDto address;
 
@@ -36,7 +37,7 @@ public class OrderDetailsDto {
         }
 
         Commande order = new Commande();
-        order.setOrderID(orderDto.getOrderID());
+        order.setId(orderDto.getId());
         order.setTotalPrice(orderDto.getTotalPrice());
         order.setReference(orderDto.getReference());
         order.setOrderDate(orderDto.getOrderDate());

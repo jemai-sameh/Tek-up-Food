@@ -1,32 +1,28 @@
 package com.tekup.model;
 
-import java.util.Date;
+import java.time.Instant;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import com.tekup.enumeration.CarteType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Payement  {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long paymentID;
+public class Payement  extends AbstractEntity{
 
 	
-	private Date paymentDate;
+	private Instant paymentDate;
 	private String carteNumber;
+
+	@Enumerated(EnumType.STRING)
 	private CarteType carteType;
 
 	@OneToOne

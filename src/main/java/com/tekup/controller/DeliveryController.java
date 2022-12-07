@@ -4,6 +4,7 @@ import com.tekup.dto.DeliveryDto;
 import com.tekup.service.interfaces.DeliveryServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,24 +19,23 @@ public class DeliveryController {
     @Autowired
     DeliveryServiceInterface serviceInterface;
 
-    @PostMapping("/saveOrUpdate")
+    @PostMapping(value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DeliveryDto> ADD(@Valid @RequestBody DeliveryDto deliveryDto) {
-        DeliveryDto deliveryDtosaved = serviceInterface.save(deliveryDto);
-        return new ResponseEntity<DeliveryDto>(deliveryDtosaved, HttpStatus.CREATED);
+        return serviceInterface.save(deliveryDto);
     }
 
-    @DeleteMapping("/deleteById/{id}")
-    public void deleteById(@PathVariable Long id) {
-        serviceInterface.deleteById(id);
+    @DeleteMapping(value = "/deleteById/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        return serviceInterface.deleteById(id);
     }
 
-    @GetMapping("/findAll")
-    public List<DeliveryDto> findAll() {
+    @GetMapping(value = "/findAll",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<DeliveryDto>> findAll() {
         return serviceInterface.findAll();
     }
 
-    @GetMapping("/findById/{id}")
-    public DeliveryDto findById(@PathVariable Long id) {
+    @GetMapping(value = "/findById/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DeliveryDto> findById(@PathVariable Long id) {
         return serviceInterface.findById(id);
     }
 

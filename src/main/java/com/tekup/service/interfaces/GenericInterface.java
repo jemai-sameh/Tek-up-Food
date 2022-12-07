@@ -1,17 +1,18 @@
 package com.tekup.service.interfaces;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 
 public interface GenericInterface<T> {
-	T save(T entity);
+	ResponseEntity<T> save(T entity);
 
-	List<T> findAll();
+	ResponseEntity<List<T>> findAll();
 
-	T update(Long id, T entity);
 
-	void deleteById(Long id);
+	ResponseEntity<Void> deleteById(Long id);
 
-	T findById(Long id);
+	ResponseEntity<T> findById(Long id);
 
 
 }
