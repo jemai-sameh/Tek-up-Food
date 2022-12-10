@@ -22,8 +22,6 @@ import lombok.experimental.SuperBuilder;
 @Entity
 public class Commande extends AbstractEntity{
 
-
-	
 	private String reference;
 	private BigDecimal totalPrice;
 

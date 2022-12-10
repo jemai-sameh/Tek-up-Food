@@ -38,14 +38,12 @@ public class DeliveryManValidator {
         if (!StringUtils.hasLength(dto.getLongitude())) {
             errors.add("please fill in the latitude of the DeliveryMan");
         }
-        if (!StringUtils.hasLength(dto.getAvailablity())) {
+       /* if (!StringUtils.hasLength(dto.getAvailablity())) {
             errors.add("please fill in the longitude of the DeliveryMan");
-        }
+        }*/
         if (!StringUtils.hasLength(dto.getLatitude())) {
             errors.add("please fill in the availablity of the DeliveryMan");
         }
         return errors;
     }
-
-
 }

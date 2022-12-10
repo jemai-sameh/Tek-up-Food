@@ -20,7 +20,7 @@ public class DeliveryManDto {
     private String passwd;
     private String latitude;
     private String longitude;
-    private String availablity;
+    private boolean availablity;
 
     public static DeliveryManDto fromEntity(DeliveryMan deliveryMan) {
         if (deliveryMan == null) {
@@ -34,7 +34,7 @@ public class DeliveryManDto {
                 .passwd(deliveryMan.getPasswd())
                 .latitude(deliveryMan.getLatitude())
                 .longitude(deliveryMan.getLongitude())
-                .availablity(deliveryMan.getAvailablity())
+                .availablity(deliveryMan.isAvailablity())
                 .build();
 
     }
@@ -51,7 +51,7 @@ public class DeliveryManDto {
         deliveryMan.setPasswd(deliveryManDto.getPasswd());
         deliveryMan.setLatitude(deliveryManDto.getLatitude());
         deliveryMan.setLongitude(deliveryManDto.getLongitude());
-        deliveryMan.setAvailablity(deliveryManDto.getAvailablity());
+        deliveryMan.setAvailablity(deliveryManDto.isAvailablity());
         return deliveryMan;
     }
 

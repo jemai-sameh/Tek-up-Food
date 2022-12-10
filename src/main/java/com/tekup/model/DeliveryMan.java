@@ -26,7 +26,7 @@ public class DeliveryMan extends AbstractEntity{
 	private String passwd;
 	private String latitude;
 	private String longitude;
-	private String availablity;
+	private boolean availablity;
 	
 	
 	@OneToMany(mappedBy = "deliveryMan",fetch = FetchType.LAZY)

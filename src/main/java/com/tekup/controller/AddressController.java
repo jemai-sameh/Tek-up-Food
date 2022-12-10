@@ -18,7 +18,6 @@ public class AddressController {
     @PostMapping(value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AddressDto> ADD(@RequestBody AddressDto dto) {
         return serviceInterface.save(dto);
-
     }
 
     @DeleteMapping(value = "/deleteById/{id}")
