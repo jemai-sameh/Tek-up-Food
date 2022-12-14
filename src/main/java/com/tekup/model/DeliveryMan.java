@@ -22,6 +22,7 @@ public class DeliveryMan extends AbstractEntity{
 
 	private String firstName;
 	private String lastName;
+	private String mail;
 	private String phoneNumber;
 	private String passwd;
 	private String latitude;

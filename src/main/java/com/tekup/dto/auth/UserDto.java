@@ -39,8 +39,8 @@ public class UserDto {
     @Email
     private String email;
 
-    @JsonProperty(access = Access.READ_ONLY)
-    private boolean active;
+    /*@JsonProperty(access = Access.READ_ONLY)
+    private boolean active;*/
 
     public static UserDto fromEntity(AppUser user) {
         return UserDto.builder()
@@ -48,7 +48,7 @@ public class UserDto {
                 .firstname(user.getFirstname())
                 .lastname(user.getLastname())
                 .email(user.getEmail())
-                .active(user.isActive())
+                //.active(user.isActive())
                 .build();
     }
 

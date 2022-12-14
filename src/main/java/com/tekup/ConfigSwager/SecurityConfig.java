@@ -36,6 +36,8 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(
                         "/**/auth/**",
+                        "api/food/**",
+                        "/**/food/**",
                         // swagger
                         "/v3/api-docs",
                         "/v3/api-docs/**",
@@ -48,7 +50,7 @@ public class SecurityConfig {
                         "/swagger-ui.html"
                 )
                 .permitAll()
-                .antMatchers(HttpMethod.DELETE  ,"**").hasRole("ADMIN")
+               // .antMatchers(HttpMethod.DELETE  ,"**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

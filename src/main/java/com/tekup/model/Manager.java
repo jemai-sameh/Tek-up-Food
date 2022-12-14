@@ -26,6 +26,8 @@ public class Manager extends AbstractEntity{
 	
 	private String firstName;
 	private String lastName;
+	private String mail;
+
 	private String phoneNumber;
 	private String passwd;
 

@@ -26,9 +26,9 @@ public class PlatValidator {
             errors.add("please fill in the platName of the Plat");
         }
 
-        if (dto.getPlatPrix()==null) {
+        /*if (dto.getPlatPrix()==null) {
             errors.add("please fill in the platPrix of the Plat");
-        }
+        }*/
 
         if (!StringUtils.hasLength(dto.getPlatType())) {
             errors.add("please fill in the platType of the Plat");
@@ -37,9 +37,9 @@ public class PlatValidator {
         if (!StringUtils.hasLength(dto.getDescription())) {
             errors.add("please fill in the description of the Plat");
         }
-        if (!StringUtils.hasLength(dto.getImage())) {
+        /*if (!StringUtils.hasLength(dto.getImage())) {
             errors.add("please fill in the image of the Plat");
-        }
+        }*/
 
         if (dto.getManager() == null || dto.getManager().getId()==null) {
             errors.add("Please select the manager");

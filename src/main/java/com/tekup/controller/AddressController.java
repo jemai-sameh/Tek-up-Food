@@ -12,6 +12,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class AddressController {
 
+
     @Autowired
     AddressServiceInterface serviceInterface;
 
@@ -25,7 +26,7 @@ public class AddressController {
         return serviceInterface.deleteById(id);
     }
 
-    @GetMapping(value = "/findAll",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/All",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AddressDto>> findAll() {
         return serviceInterface.findAll();
     }

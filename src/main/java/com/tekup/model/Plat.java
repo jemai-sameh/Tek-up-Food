@@ -26,7 +26,7 @@ public class Plat  extends AbstractEntity{
 
 
 	private String platName;
-	private BigDecimal platPrix;
+	private double platPrix;
 	private String platType;
 	private String description;
 	private String image;

@@ -18,7 +18,7 @@ public class PlatDto {
 
 	private Long id;
 	private String platName;
-	private BigDecimal platPrix;
+	private double platPrix;
 	private String platType;
 	private String description;
 	private String image;

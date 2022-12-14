@@ -21,7 +21,7 @@ public class OrderDto {
 	private Long id;
 
 	private String reference;
-	private BigDecimal totalPrice;
+	private double totalPrice;
 	private PaymentMethod paymentMethod;
 
 	private Instant orderDate;

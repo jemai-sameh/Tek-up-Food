@@ -23,7 +23,7 @@ import lombok.experimental.SuperBuilder;
 public class Commande extends AbstractEntity{
 
 	private String reference;
-	private BigDecimal totalPrice;
+	private double totalPrice;
 
 	@Enumerated(EnumType.STRING)
 	private PaymentMethod paymentMethod;

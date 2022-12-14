@@ -30,7 +30,7 @@ public class AppUser implements UserDetails{
     @Column(unique = true)
     private String email;
     private String password;
-    private boolean active;
+    //private boolean active;
     @ManyToOne
     private Role role;
     @Override
@@ -58,10 +58,10 @@ public class AppUser implements UserDetails{
         // TODO Auto-generated method stub
         return true;
     }
+
     @Override
     public boolean isEnabled() {
-        // TODO Auto-generated method stub
-        return active;
+        return true;
     }
 
 

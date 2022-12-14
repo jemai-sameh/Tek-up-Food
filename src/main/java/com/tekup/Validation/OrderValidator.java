@@ -26,9 +26,9 @@ public class OrderValidator {
         if (!StringUtils.hasLength(dto.getReference())) {
             errors.add("please fill in the reference of the Order");
         }
-        if (dto.getTotalPrice()==null) {
+        /*if (dto.getTotalPrice()==null) {
             errors.add("please fill in the totalPrice of the Order");
-        }
+        }*/
 /*        if (dto.getPaymentMethod()==null) {
             errors.add("please fill in the paymentMethod of the Order");
         }
