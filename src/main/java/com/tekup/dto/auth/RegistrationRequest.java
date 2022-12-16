@@ -6,11 +6,14 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.tekup.model.AppUser;
+import com.tekup.model.Manager;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.Instant;
 
 
 @Getter
@@ -23,11 +26,14 @@ public class RegistrationRequest {
     @NotEmpty(message = "the firstname should not be empty")
     @NotBlank(message = "the firstname should not be empty")
     @Size(min = 3, max = 20, message = "the firstname must be between 3 and 20")
-    private String firstname;
+    private String fullName;
 
-    @NotEmpty(message = "the lastname should not be empty")
-    @NotBlank(message = "the lastname should not be empty")
-    private String lastname;
+
+
+
+    @NotEmpty
+    @NotBlank
+    private String phoneNumber;
 
     @NotEmpty
     @NotBlank
@@ -38,10 +44,22 @@ public class RegistrationRequest {
     @NotBlank
     private String password;
 
+
+
+
+
     public static AppUser toEntity(RegistrationRequest request) {
         return AppUser.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+                .fullName(request.getFullName())
+                .phoneNumber(request.getPhoneNumber())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .build();
+    }
+    public static Manager toEntityManager(RegistrationRequest request) {
+        return Manager.builder()
+                .fullName(request.getFullName())
+                .phoneNumber(request.getPhoneNumber())
                 .email(request.getEmail())
                 .password(request.getPassword())
                 .build();

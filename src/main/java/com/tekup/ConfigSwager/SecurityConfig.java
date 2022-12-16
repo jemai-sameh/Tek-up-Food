@@ -36,6 +36,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(
                         "/**/auth/**",
+                        "api/food/plat/uploadPlatImage/**",
                         "api/food/**",
                         "/**/food/**",
                         // swagger

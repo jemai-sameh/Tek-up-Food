@@ -24,6 +24,7 @@ public class OrderController {
 
     @PostMapping(value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderDto> ADD(@Valid @RequestBody OrderDetailsDto dto) {
+        System.out.println(dto.getPaymentMethod().toString());
         return serviceInterface.saveOrder(dto);
     }
 

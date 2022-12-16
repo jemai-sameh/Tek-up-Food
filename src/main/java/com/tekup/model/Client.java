@@ -2,12 +2,8 @@ package com.tekup.model;
 
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,13 +14,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @Entity
-public class Client extends AbstractEntity{
-	
-	private String firstName;
-	private String lastName;
-	private String phoneNumber;
-	private String passwd;
-	private String mail;
+@DiscriminatorValue("clien")
+public class Client extends AppUser{
+
 	
 	
 	@OneToMany(mappedBy = "client" ,fetch = FetchType.LAZY)

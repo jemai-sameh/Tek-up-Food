@@ -9,7 +9,10 @@ import com.tekup.ConfigSwager.JwtUtils;
 import com.tekup.dto.auth.AuthenticationRequest;
 import com.tekup.dto.auth.AuthenticationResponse;
 import com.tekup.dto.auth.RegistrationRequest;
-import com.tekup.model.AppUser;
+import com.tekup.model.*;
+import com.tekup.repository.ClientRepository;
+import com.tekup.repository.DeliveryManRepository;
+import com.tekup.repository.ManagerRepository;
 import com.tekup.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,15 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private DeliveryManRepository deliveryManRepository;
+
+    @Autowired
+    private ManagerRepository managerRepository;
+
+    @Autowired
+    private ClientRepository clientRepository;
     @Autowired
     private  PasswordEncoder passwordEncoder;
     @Autowired
@@ -35,20 +47,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public AuthenticationResponse register(RegistrationRequest request) {
 
-        AppUser user = RegistrationRequest.toEntity(request);
+        Manager user = RegistrationRequest.toEntityManager(request);
         // encode the password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(user.getRole());
-        var savedUser = repository.save(user);
+
+       // var savedUser = (user.getRole()== Role.CLIENT)? clientRepository.save((Client) user):(user.getRole()== Role.MANAGER)? managerRepository.save((Manager) user): deliveryManRepository.save((DeliveryMan) user);
+        var savedUser= managerRepository.save(user);
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", savedUser.getId()); // optional
-        claims.put("fullName", savedUser.getFirstname() + " " + savedUser.getLastname()); // optional
+        claims.put("fullName", savedUser.getFullName()); // optional
 
         // generate a JWT token
         String token = jwtUtils.generateToken(savedUser, claims);
         return AuthenticationResponse.builder()
                 .token(token)
-                .name(savedUser.getFirstname() + " " + savedUser.getLastname())
+                .name(savedUser.getFullName())
                 .build();
     }
 
@@ -60,11 +74,12 @@ public class UserServiceImpl implements UserService {
         final AppUser user = repository.findByEmail(request.getEmail()).get();
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.getId()); // optional
-        claims.put("fullName", user.getFirstname() + " " + user.getLastname()); // optional
+        claims.put("fullName", user.getFullName()); // optional
         // generate a JWT token
         String token = jwtUtils.generateToken(user, claims);
         return AuthenticationResponse.builder()
                 .token(token)
+                .name(user.getFullName())
                 .build();
     }
 

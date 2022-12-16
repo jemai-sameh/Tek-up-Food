@@ -22,7 +22,7 @@ public class OrderDto {
 
 	private String reference;
 	private double totalPrice;
-	private PaymentMethod paymentMethod;
+	private String paymentMethod;
 
 	private Instant orderDate;
 

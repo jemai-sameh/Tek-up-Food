@@ -1,13 +1,10 @@
 package com.tekup.model;
 
-import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tekup.enumeration.PaymentMethod;
 
@@ -25,8 +22,7 @@ public class Commande extends AbstractEntity{
 	private String reference;
 	private double totalPrice;
 
-	@Enumerated(EnumType.STRING)
-	private PaymentMethod paymentMethod;
+	private String paymentMethod;
 	
 
 	private Instant orderDate;

@@ -1,12 +1,7 @@
 package com.tekup.model;
 
 import java.util.Set;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,13 +13,9 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class DeliveryMan extends AbstractEntity{
+@DiscriminatorValue("deMan")
+public class DeliveryMan extends AppUser{
 
-	private String firstName;
-	private String lastName;
-	private String mail;
-	private String phoneNumber;
-	private String passwd;
 	private String latitude;
 	private String longitude;
 	private boolean availablity;

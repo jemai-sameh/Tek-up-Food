@@ -1,24 +1,25 @@
 package com.tekup.service.Implimentation;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.tekup.Validation.PlatValidator;
-import com.tekup.dto.PlatDto;
+import com.tekup.dto.LabelValueDto;
 import com.tekup.dto.PlatDto;
 import com.tekup.exception.EntityNotFoundException;
 import com.tekup.exception.ErrorCodes;
 import com.tekup.exception.InvalidEntityException;
 import com.tekup.exception.InvalidOperationException;
 import com.tekup.model.Plat;
-import com.tekup.model.Plat;
 import com.tekup.repository.PlatRepository;
+import com.tekup.service.interfaces.ImageStorage;
 import com.tekup.service.interfaces.PlatServiceInterface;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 @Service
@@ -28,6 +29,8 @@ public class PlatService implements PlatServiceInterface {
 	@Autowired
 	PlatRepository  repository;
 
+	@Autowired
+	ImageStorage   imageStorage;
 
 	@Override
 	public ResponseEntity<PlatDto> save(PlatDto entityDto) {
@@ -49,7 +52,24 @@ public class PlatService implements PlatServiceInterface {
 				.map(PlatDto::fromEntity)
 				.collect(Collectors.toList()));
 	}
+	@Override
+	public ResponseEntity<List<LabelValueDto>> findAllDto() {
+		return  ResponseEntity.ok(repository.findAll().stream()
+				.map(LabelValueDto::fromEntity)
+				.collect(Collectors.toList()));
+	}
 
+	@Override
+	public ResponseEntity<PlatDto> uploadImagePlat(Long platId, MultipartFile image) {
+		ResponseEntity<PlatDto> platResponse =this.findById(platId);
+		String imageName=imageStorage.store(image);
+		String fileImageDownloadUrl= ServletUriComponentsBuilder.fromCurrentContextPath().path("api/food/plat/downloadPlatImage/").path(imageName).toUriString();
+		PlatDto platDto=platResponse.getBody();
+		if (platDto!=null)
+			platDto.setImage(fileImageDownloadUrl);
+
+		return this.save(platDto);
+	}
 
 	@Override
 	public ResponseEntity<PlatDto> findById(Long id) {
@@ -76,4 +96,6 @@ public class PlatService implements PlatServiceInterface {
 		repository.delete(entity);
 		return  ResponseEntity.ok().build();
 	}
+
+
 }

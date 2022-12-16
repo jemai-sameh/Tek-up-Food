@@ -12,8 +12,7 @@ public class ClientValidator {
         List<String> errors = new ArrayList<>();
 
         if (dto == null) {
-            errors.add("please fill in the firstName of the client");
-            errors.add("please fill in the lastName of the client");
+            errors.add("please fill in the fullName of the client");
             errors.add("please fill in the phoneNumber of the client");
             errors.add("please fill in the passwd of the client");
             errors.add("please fill in the mail of the client");
@@ -21,19 +20,17 @@ public class ClientValidator {
         }
 
 
-        if (!StringUtils.hasLength(dto.getFirstName())) {
-            errors.add("please fill in the firstName of the client");
+        if (!StringUtils.hasLength(dto.getFullName())) {
+            errors.add("please fill in the fullName of the client");
         }
-        if (!StringUtils.hasLength(dto.getLastName())) {
-            errors.add("please fill in the lastName of the client");
-        }
+
         if (!StringUtils.hasLength(dto.getPhoneNumber())) {
             errors.add("please fill in the phoneNumber of the client");
         }
-        if (!StringUtils.hasLength(dto.getPasswd())) {
+        if (!StringUtils.hasLength(dto.getPassword())) {
             errors.add("please fill in the passwd of the client");
         }
-        if (!StringUtils.hasLength(dto.getMail())) {
+        if (!StringUtils.hasLength(dto.getEmail())) {
             errors.add("please fill in the mail of the client");
         }
         return errors;

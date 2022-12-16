@@ -17,7 +17,7 @@ public class OrderDetailsDto {
 
     private String reference;
     private double totalPrice;
-    private PaymentMethod paymentMethod;
+    private String paymentMethod;
 
     private Instant orderDate;
 
@@ -41,6 +41,7 @@ public class OrderDetailsDto {
         order.setTotalPrice(orderDto.getTotalPrice());
         order.setReference(orderDto.getReference());
         order.setOrderDate(orderDto.getOrderDate());
+        order.setPaymentMethod(orderDto.getPaymentMethod());
         order.setClient(ClientDto.toEntity(orderDto.getClient()));
         order.setManager(ManagerDto.toEntity(orderDto.getManager()));
         order.setAddress(AddressDto.toEntity(orderDto.getAddress()));

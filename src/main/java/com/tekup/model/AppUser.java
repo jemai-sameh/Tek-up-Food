@@ -1,37 +1,42 @@
 package com.tekup.model;
 
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Collections;
 
 import javax.persistence.*;
 
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Getter
 @Setter
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
-@Table(name="_User")
-public class AppUser implements UserDetails{
-    @Id
-    @GeneratedValue
-    private Long id;
-    private String firstname;
-    private String lastname;
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type",length = 5)
+public class AppUser extends AbstractEntity implements UserDetails{
+
+
+    private String fullName;
+
+
+    @Column(unique = true)
+    private String phoneNumber;
+
     @Column(unique = true)
     private String email;
     private String password;
     //private boolean active;
-    @ManyToOne
+    @Enumerated(EnumType.STRING)
     private Role role;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

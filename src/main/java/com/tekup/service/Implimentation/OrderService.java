@@ -39,13 +39,16 @@ public class OrderService implements OrderServiceInterface{
 			log.error("Order is not valid {}", entityDto);
 			throw new InvalidEntityException("The Order is invalid", ErrorCodes.ORDER_NOT_VALID, errors);
 		}
+		System.out.println(entityDto.getPaymentMethod());
 		Commande order = OrderDetailsDto.toEntity(entityDto);
+		System.out.println("++"+order.getPaymentMethod());
 		for (Long id: entityDto.getPlatIds()) {
 			//	System.err.println(id);
 			Plat plat = new Plat();
 			plat.setId(id);
 			order.addPlat(plat);
 		}
+
 
 		return ResponseEntity.ok(OrderDto.fromEntity(repository.save(
 				order
